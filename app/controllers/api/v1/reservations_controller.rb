@@ -3,7 +3,7 @@ class Api::V1::ReservationsController < ApplicationController
     @reservations = Reservation.where(user_id: @current_user.id)
     render json: reservations
   end
-  
+
   def create
     @reservation = Reservation.new(reservation_params.merge(user_id: current_user_id))
     if @reservation.save
@@ -27,5 +27,5 @@ class Api::V1::ReservationsController < ApplicationController
 
   def reservation_params
     params.permit(:start_date, :end_date, :room_id)
-   end
+  end
 end
