@@ -13,6 +13,18 @@ class Api::V1::ReservationsController < ApplicationController
     end
   end
 
+  def destroy
+    @reservation = Reservation.find(params[:id])
+
+    if @reservation.destroy
+      render json: { message: 'Reservation deleted successfully' }, status: :ok
+    else
+      render json: { message: 'Reservation could not be deleted' }, status: :unprocessable_entity
+    end
+  end
+
+  private
+
   def reservation_params
     params.permit(:start_date, :end_date, :room_id)
    end
