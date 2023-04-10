@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+# Room.create([
+#   {name: 'Room 1', description: 'yellow colored room', photo: 'photo.png', city: 'Lagos', price: 500},
+#   {name: 'Room 2', description: 'white colored room', photo: 'photo.png', city: 'Kwara', price: 230},
+#   {name: 'Room 3', description: 'green colored room', photo: 'photo.png', city: 'Abuja', price: 1350},
+# ])
