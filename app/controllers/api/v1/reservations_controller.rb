@@ -1,11 +1,12 @@
 class Api::V1::ReservationsController < ApplicationController
   def index
-    @reservations = Reservation.where(user_id: @current_user.id)
-    render json: reservations
+    @user = current_user
+    @reservations = Reservation.where(user_id: @user.id)
+    render json: @reservations
   end
 
   def create
-    @reservation = Reservation.new(reservation_params.merge(user_id: current_user_id))
+    @reservation = Reservation.new(reservation_params.merge(user_id: current_user.id))
     if @reservation.save
       render json: @reservation, status: :created
     else
