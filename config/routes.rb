@@ -10,4 +10,6 @@ Rails.application.routes.draw do
       resources :reservations, only: [:index, :create, :destroy]
     end
   end
+  resources :users
+  post '/auth/login', to: 'authentication#login'
 end
