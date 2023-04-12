@@ -1,5 +1,5 @@
 class Api::V1::RoomsController < ApplicationController
-  before_action :set_room, only: [:show, :update, :destroy]
+  before_action :set_room, only: %i[show update destroy]
 
   # GET /api/rooms
   def index

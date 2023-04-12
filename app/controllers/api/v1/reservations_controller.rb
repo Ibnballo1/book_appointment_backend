@@ -29,4 +29,8 @@ class Api::V1::ReservationsController < ApplicationController
   def reservation_params
     params.permit(:start_date, :end_date, :room_id)
   end
+
+  def current_user
+    @current_user ||= User.find_by(id: session[:user_id])
+  end
 end
