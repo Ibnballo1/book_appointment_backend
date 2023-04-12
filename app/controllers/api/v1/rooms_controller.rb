@@ -1,4 +1,4 @@
-class Api::RoomsController < ApplicationController
+class Api::V1::RoomsController < ApplicationController
   before_action :set_room, only: [:show, :update, :destroy]
 
   # GET /api/rooms
