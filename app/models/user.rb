@@ -6,4 +6,5 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :password, presence: true
   validates :name, presence: true, uniqueness: true
+  validates :role, inclusion: { in: %w[user admin] }
 end

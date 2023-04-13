@@ -13,6 +13,10 @@ class Api::V1::RoomsController < ApplicationController
   end
 
   def create
+    if @current_user.role == 'user'
+      render(json: { error: 'User not allowed to create rooms' }, status: 401)
+      return
+    end
     @room = Room.new(room_params)
 
     if @room.save
@@ -33,6 +37,10 @@ class Api::V1::RoomsController < ApplicationController
 
   # DELETE /api/rooms/:id
   def destroy
+    if @current_user.role == 'user'
+      render(json: { error: 'User not allowed to delete rooms' }, status: 401)
+      return
+    end
     @room.destroy
     head :no_content
   end
