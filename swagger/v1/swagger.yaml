@@ -4,6 +4,47 @@ info:
   title: API V1
   version: v1
 paths:
+  "/api/v1/reservations":
+    post:
+      summary: Creates a reservation
+      tags:
+      - Reservations
+      parameters: []
+      responses:
+        '201':
+          description: reservation created
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                start_date:
+                  type: date
+                end_date:
+                  type: date
+                room_id:
+                  type: integer
+              required:
+              - start_date
+              - end_date
+              - room_id
+          application/xml:
+            schema:
+              type: object
+              properties:
+                start_date:
+                  type: date
+                end_date:
+                  type: date
+                room_id:
+                  type: integer
+              required:
+              - start_date
+              - end_date
+              - room_id
   "/api/v1/rooms":
     post:
       summary: Creates a room
