@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   #   resources :rooms
   # end
   # Defines the root path route ("/")
-  root to: redirect('/api-docs')
+  get '/', to: redirect('/api-docs')
   namespace :api do
     namespace :v1 do
       resources :reservations, only: [:index, :create, :destroy]

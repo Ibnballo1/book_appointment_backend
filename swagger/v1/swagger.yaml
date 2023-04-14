@@ -1,0 +1,127 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/rooms":
+    post:
+      summary: Creates a room
+      tags:
+      - Rooms
+      parameters: []
+      responses:
+        '201':
+          description: room created
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: text
+                photo:
+                  type: string
+                city:
+                  type: string
+                price:
+                  type: integer
+              required:
+              - name
+              - description
+              - photo
+              - city
+              - price
+          application/xml:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: text
+                photo:
+                  type: string
+                city:
+                  type: string
+                price:
+                  type: integer
+              required:
+              - name
+              - description
+              - photo
+              - city
+              - price
+  "/api/v1/rooms/{id}":
+    get:
+      summary: Retrieves a room
+      tags:
+      - Rooms
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: name found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  description:
+                    type: text
+                  photo:
+                    type: string
+                  city:
+                    type: string
+                  price:
+                    type: integer
+                required:
+                - id
+                - name
+                - description
+                - photo
+                - city
+                - price
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  description:
+                    type: text
+                  photo:
+                    type: string
+                  city:
+                    type: string
+                  price:
+                    type: integer
+                required:
+                - id
+                - name
+                - description
+                - photo
+                - city
+                - price
+        '404':
+          description: room not found
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com
