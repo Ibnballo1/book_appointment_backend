@@ -3,7 +3,6 @@ require 'swagger_helper'
 describe 'Reservations API' do
 
   path '/api/v1/reservations' do
-
     post 'Creates a reservation' do
       tags 'Reservations'
       consumes 'application/json', 'application/xml'
@@ -26,6 +25,14 @@ describe 'Reservations API' do
 
       response '422', 'invalid request' do
         let(:reservation) { { start_date: '01/01/2023' } }
+        run_test!
+      end
+    end
+
+    get('List of reservations') do
+      tags 'Reservations'
+      produces 'application/json'
+      response(200, 'successful') do
         run_test!
       end
     end

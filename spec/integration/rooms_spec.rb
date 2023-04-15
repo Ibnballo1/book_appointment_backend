@@ -5,11 +5,7 @@ describe 'Rooms API' do
   path '/api/v1/rooms' do
     get('List of rooms') do
       tags 'Rooms'
-      parameter name: :filter,
-                in: :query,
-                type: :boolean,
-                description: 'Filter rooms by availability',
-                required: false
+      produces 'application/json'
       response(200, 'successful') do
         run_test!
       end
@@ -17,7 +13,7 @@ describe 'Rooms API' do
 
     post 'Creates a room' do
       tags 'Rooms'
-      consumes 'application/json', 'application/xml'
+      consumes 'application/json'
       parameter name: :room, in: :body, schema: {
         type: :object,
         properties: {
@@ -46,7 +42,7 @@ describe 'Rooms API' do
 
     get 'Retrieves a room' do
       tags 'Rooms'
-      produces 'application/json', 'application/xml'
+      produces 'application/json'
       parameter name: :id, :in => :path, :type => :string
 
       response '200', 'name found' do

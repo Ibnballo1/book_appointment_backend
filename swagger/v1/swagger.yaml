@@ -47,18 +47,18 @@ paths:
               - start_date
               - end_date
               - room_id
+    get:
+      summary: List of reservations
+      tags:
+      - Reservations
+      responses:
+        '200':
+          description: successful
   "/api/v1/rooms":
     get:
       summary: List of rooms
       tags:
       - Rooms
-      parameters:
-      - name: filter
-        in: query
-        description: Filter rooms by availability
-        required: false
-        schema:
-          type: boolean
       responses:
         '200':
           description: successful
@@ -94,26 +94,6 @@ paths:
               - photo
               - city
               - price
-          application/xml:
-            schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                description:
-                  type: text
-                photo:
-                  type: string
-                city:
-                  type: string
-                price:
-                  type: integer
-              required:
-              - name
-              - description
-              - photo
-              - city
-              - price
   "/api/v1/rooms/{id}":
     get:
       summary: Retrieves a room
@@ -130,29 +110,6 @@ paths:
           description: name found
           content:
             application/json:
-              schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  description:
-                    type: text
-                  photo:
-                    type: string
-                  city:
-                    type: string
-                  price:
-                    type: integer
-                required:
-                - id
-                - name
-                - description
-                - photo
-                - city
-                - price
-            application/xml:
               schema:
                 type: object
                 properties:
