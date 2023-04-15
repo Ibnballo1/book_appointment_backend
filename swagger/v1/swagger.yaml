@@ -1,0 +1,158 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/reservations":
+    post:
+      summary: Creates a reservation
+      tags:
+      - Reservations
+      security:
+      - Bearer: {}
+      parameters: []
+      responses:
+        '201':
+          description: reservation created
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                start_date:
+                  type: date
+                end_date:
+                  type: date
+                room_id:
+                  type: integer
+              required:
+              - start_date
+              - end_date
+              - room_id
+          application/xml:
+            schema:
+              type: object
+              properties:
+                start_date:
+                  type: date
+                end_date:
+                  type: date
+                room_id:
+                  type: integer
+              required:
+              - start_date
+              - end_date
+              - room_id
+    get:
+      summary: List of reservations
+      tags:
+      - Reservations
+      responses:
+        '200':
+          description: successful
+  "/api/v1/rooms":
+    get:
+      summary: List of rooms
+      tags:
+      - Rooms
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: Creates a room
+      tags:
+      - Rooms
+      parameters: []
+      responses:
+        '201':
+          description: room created
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: text
+                photo:
+                  type: string
+                city:
+                  type: string
+                price:
+                  type: integer
+              required:
+              - name
+              - description
+              - photo
+              - city
+              - price
+  "/api/v1/rooms/{id}":
+    get:
+      summary: Retrieves a room
+      tags:
+      - Rooms
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: name found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  description:
+                    type: text
+                  photo:
+                    type: string
+                  city:
+                    type: string
+                  price:
+                    type: integer
+                required:
+                - id
+                - name
+                - description
+                - photo
+                - city
+                - price
+        '404':
+          description: room not found
+    delete:
+      summary: Delete a room by {id}
+      tags:
+      - Rooms
+      responses:
+        '202':
+          description: Deleted Room successfully
+        '404':
+          description: Room not found
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+security:
+- bearerAuth: []
+servers:
+- url: http://localhost:3000
+  variables:
+    defaultHost:
+      default: www.example.com
