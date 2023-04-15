@@ -1,7 +1,6 @@
 require 'swagger_helper'
 
 describe 'Reservations API' do
-
   path '/api/v1/reservations' do
     post 'Creates a reservation' do
       tags 'Reservations'
@@ -14,11 +13,11 @@ describe 'Reservations API' do
           end_date: { type: :date },
           room_id: { type: :integer }
         },
-        required: [ 'start_date', 'end_date', 'room_id' ]
+        required: %w[start_date end_date room_id]
       }
 
       response '201', 'reservation created' do
-        let(:"Authorization") { "Bearer #{token_for(user)}" }
+        let(:Authorization) { "Bearer #{token_for(user)}" }
         let(:reservation) { { start_date: '01/01/2023', end_date: '05/01/2023', room_id: 1 } }
         run_test!
       end
