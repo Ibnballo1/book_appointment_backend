@@ -9,6 +9,8 @@ paths:
       summary: Creates a reservation
       tags:
       - Reservations
+      security:
+      - Bearer: {}
       parameters: []
       responses:
         '201':
@@ -46,6 +48,20 @@ paths:
               - end_date
               - room_id
   "/api/v1/rooms":
+    get:
+      summary: List of rooms
+      tags:
+      - Rooms
+      parameters:
+      - name: filter
+        in: query
+        description: Filter rooms by availability
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: successful
     post:
       summary: Creates a room
       tags:
@@ -161,8 +177,25 @@ paths:
                 - price
         '404':
           description: room not found
+    delete:
+      summary: Delete a room by {id}
+      tags:
+      - Rooms
+      responses:
+        '202':
+          description: Deleted Room successfully
+        '404':
+          description: Room not found
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+security:
+- bearerAuth: []
 servers:
-- url: https://{defaultHost}
+- url: http://localhost:3000
   variables:
     defaultHost:
       default: www.example.com

@@ -7,6 +7,7 @@ describe 'Reservations API' do
     post 'Creates a reservation' do
       tags 'Reservations'
       consumes 'application/json', 'application/xml'
+      security [Bearer: {}]
       parameter name: :reservation, in: :body, schema: {
         type: :object,
         properties: {
@@ -18,6 +19,7 @@ describe 'Reservations API' do
       }
 
       response '201', 'reservation created' do
+        let(:"Authorization") { "Bearer #{token_for(user)}" }
         let(:reservation) { { start_date: '01/01/2023', end_date: '05/01/2023', room_id: 1 } }
         run_test!
       end

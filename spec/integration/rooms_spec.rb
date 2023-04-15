@@ -3,6 +3,17 @@ require 'swagger_helper'
 describe 'Rooms API' do
 
   path '/api/v1/rooms' do
+    get('List of rooms') do
+      tags 'Rooms'
+      parameter name: :filter,
+                in: :query,
+                type: :boolean,
+                description: 'Filter rooms by availability',
+                required: false
+      response(200, 'successful') do
+        run_test!
+      end
+    end
 
     post 'Creates a room' do
       tags 'Rooms'
@@ -56,6 +67,18 @@ describe 'Rooms API' do
 
       response '404', 'room not found' do
         let(:id) { 'invalid' }
+        run_test!
+      end
+    end
+
+    delete('Delete a room by {id}') do
+      tags 'Rooms'
+      response(202, 'Deleted Room successfully') do
+        let(:id) { '123' }
+        run_test!
+      end
+
+      response(404, 'Room not found') do
         run_test!
       end
     end

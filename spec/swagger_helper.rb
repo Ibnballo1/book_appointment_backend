@@ -2,6 +2,14 @@
 
 require 'rails_helper'
 
+security = {
+  bearerAuth: {
+    type: :http,
+    scheme: :bearer,
+    bearerFormat: 'JWT'
+  }
+}
+
 RSpec.configure do |config|
   # Specify a root folder where Swagger JSON files are generated
   # NOTE: If you're using the rswag-api to serve API descriptions, you'll need
@@ -22,9 +30,13 @@ RSpec.configure do |config|
         version: 'v1'
       },
       paths: {},
+      components: {
+        securitySchemes: security
+      },
+      security: [{ bearerAuth: [] }],
       servers: [
         {
-          url: 'https://{defaultHost}',
+          url: 'http://localhost:3000',
           variables: {
             defaultHost: {
               default: 'www.example.com'
