@@ -1,7 +1,11 @@
 class Api::V1::ReservationsController < ApplicationController
   def index
     @user = current_user
-    @reservations = Reservation.where(user_id: @user.id)
+    @reservations = Reservation.includes(:room).where(user_id: @user.id).as_json(include: { room: {
+      only: %i[
+        name city
+      ] } })
+
     render json: @reservations
   end
 
