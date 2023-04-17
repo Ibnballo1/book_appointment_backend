@@ -14,9 +14,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    if User.first(2).count < 2
-      @user.role = 'admin'
-    end
+    @user.role = 'admin' if User.first(2).count < 2
 
     if @user.save
       render json: @user, status: :created, location: @user
