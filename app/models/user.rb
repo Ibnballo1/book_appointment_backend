@@ -12,7 +12,7 @@ class User < ApplicationRecord
 
   private
 
-def assign_admin_role
-  self.role = 'admin' if [1, 2].include?(user_id)
-end
+  def assign_admin_role
+    self.role = 'admin' if [1, 2].include?(user_id)
+  end
 end
