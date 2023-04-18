@@ -36,4 +36,13 @@ RSpec.describe Room do
                        description: 'Description')
     expect(room.price).to eql(100)
   end
+
+  it 'Room Api should have a city' do
+    room = Room.create(name: 'Name',
+                       photo: 'photo.png',
+                       price: '100',
+                       city: 'city',
+                       description: 'Description')
+    expect(room.city).to eql('city')
+  end
 end
