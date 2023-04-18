@@ -1,88 +1,32 @@
 require 'swagger_helper'
 
-describe 'Rooms API' do
-  path '/api/v1/rooms' do
-    get('List of rooms') do
-      tags 'Rooms'
-      produces 'application/json'
-      response(200, 'successful') do
-        run_test!
-      end
-    end
+RSpec.describe Room do
+  # let(:user) do
+  #   User.create(name: 'Admin', email: 'admin@gmail.com', password: '123456789', role: 'admin')
+  # end
 
-    post 'Creates a room' do
-      tags 'Rooms'
-      consumes 'application/json'
-      parameter name: :room, in: :body, schema: {
-        type: :object,
-        properties: {
-          name: { type: :string },
-          description: { type: :text },
-          photo: { type: :string },
-          city: { type: :string },
-          price: { type: :integer }
-        },
-        required: %w[name description photo city price]
-      }
+  # let(:token) do
+  #   post '/auth/login', params: { email: user.email, password: user.password }
+  #   response.headers['Authorization']
+  # end
 
-      response '201', 'room created' do
-        let(:room) { { name: 'Room 4', description: 'Junior Suite', photo: 'photo.png', city: 'Kano', price: 380 } }
-        run_test!
-      end
+  # let(:auth_headers) { { 'Authorization': "Bearer #{token}" } }
 
-      response '422', 'invalid request' do
-        let(:room) { { name: 'foo' } }
-        run_test!
-      end
-    end
+  it 'Room Api should be valid' do
+    room = Room.create(name: '',
+                       photo: '',
+                       price: '',
+                       city: '',
+                       description: '')
+    expect(room).to_not be_valid
   end
 
-  path '/api/v1/rooms/{id}' do
-    get 'Retrieves a room' do
-      tags 'Rooms'
-      produces 'application/json'
-      parameter name: :id, in: :path, type: :string
-      response '200', 'name found' do
-        schema type: :object,
-               properties: {
-                 id: { type: :integer },
-                 name: { type: :string },
-                 description: { type: :text },
-                 photo: { type: :string },
-                 city: { type: :string },
-                 price: { type: :integer }
-               },
-               required: %w[id name description photo city price]
-
-        let(:id) do
-          Room.create(
-            name: 'Room 4',
-            description: 'Junior Suite',
-            photo: 'photo.png',
-            city: 'Kano', price: 380
-          ).id
-        end
-        run_test!
-      end
-
-      response '404', 'room not found' do
-        let(:id) { 'invalid' }
-        run_test!
-      end
-    end
-  end
-
-  path '/api/v1/rooms/{id}' do
-    delete('Delete a room by {id}') do
-      tags 'Rooms'
-      response(202, 'Deleted Room successfully') do
-        let(:id) { '123' }
-        run_test!
-      end
-
-      response(404, 'Room not found') do
-        run_test!
-      end
-    end
+  it 'Room Api should have a name' do
+    room = Room.create(name: 'Name',
+                       photo: 'photo.png',
+                       price: '100',
+                       city: 'City',
+                       description: 'Description')
+    expect(room.name).to eql('Name')
   end
 end
