@@ -21,4 +21,11 @@ RSpec.describe User do
                        password: '123123')
     expect(user.email).to eql('Admin@email.com')
   end
+
+  it 'should have a password' do
+    user = User.create(name: 'Admin',
+                       email: 'Admin@email.com',
+                       password: '123123')
+    expect(user.password).to eql('123123')
+  end
 end
