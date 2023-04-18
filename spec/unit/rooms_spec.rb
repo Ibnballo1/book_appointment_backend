@@ -18,7 +18,7 @@ RSpec.describe Room do
                        description: 'Description')
     expect(room.name).to eql('Name')
   end
-  
+
   it 'Room Api should have a photo' do
     room = Room.create(name: 'Name',
                        photo: 'photo.png',
@@ -26,6 +26,15 @@ RSpec.describe Room do
                        city: 'City',
                        description: 'Description')
     expect(room.photo).to eql('photo.png')
+  end
+
+  it 'Room Api should have a price that great or equal to 0' do
+    room = Room.create(name: 'Name',
+                       photo: 'photo.png',
+                       price: '-1',
+                       city: 'City',
+                       description: 'Description')
+    expect(room).to_not be_valid
   end
 
   it 'Room Api should have a price' do
