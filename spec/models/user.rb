@@ -1,4 +1,4 @@
-require 'rails_helper'
+require 'swagger_helper'
 
 RSpec.describe User do
   it 'User should be valid' do
