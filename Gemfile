@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.1.3'
+ruby '3.2.2'
 
 gem 'rubocop', '>= 1.0', '< 2.0'
 
@@ -15,7 +15,7 @@ gem 'rswag'
 gem 'rails', '~> 7.0.4', '>= 7.0.4.3'
 
 # Use postgresql as the database for Active Record
-gem 'pg', '~> 1.1'
+gem 'pg'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '~> 5.0'
@@ -54,3 +54,4 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
+
