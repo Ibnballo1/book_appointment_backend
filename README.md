@@ -1,20 +1,11 @@
 <a name="readme-top"></a>
 
-<div align="center">
-
-  <img src="https://user-images.githubusercontent.com/84629565/202665566-ba1a8ed3-041f-45bc-b21b-efdcc357189b.png" alt="logo" width="140"  height="auto" />
-  <br/>
-
-</div>
-
 # 📗 Table of Contents
 
 - [📖 About the Project](#about-project)
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
-    - [Website Mockup 📱 💻 🖥️](#screenshots)
-    - [🖺 Entity Relationship Diagram](#er-diagram)
   - [<img src="https://cdn-icons-png.flaticon.com/512/5360/5360804.png" width="23" height="20"/> Kanban Board](#kanban-board)
   - [<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/539px-React-icon.svg.png" width="23" height="20"/> React Frontend](#react-frontend)
   - [<img src="https://emojipedia-us.s3.amazonaws.com/source/microsoft-teams/337/spiral-notepad_1f5d2-fe0f.png" width="23" height="20"/> API Documentation](#api-docs)
@@ -37,10 +28,24 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 book appointment Backend <a name="about-project"></a>
-![logo]()
+# 📖 Pinecone Place <a name="about-project"></a>
+![logo](./public/logo.png)
 
-**Book Appointment Frontend** is a luxury room booking application where the user can register new accounts, login and reserve appointsments for booking rooms. It is built and connected by using two different apps both in different repos.One repo take care of the back-end side of the application built with Ruby on Rails and PostgreSQL. The second repo takes care of the front-end which was built with JavaScript React-Redux.
+**Pinecone Place** is a luxury room booking application where the user can register new accounts, login and reserve appointsments for booking rooms. It is built and connected by using two different apps both in different repos.One repo take care of the back-end side of the application built with Ruby on Rails and PostgreSQL. The second repo takes care of the front-end which was built with JavaScript React-Redux.
+
+![Home page image](./public/home.png)
+
+
+### Kanban Board 🖧
+- [Kanban Board](https://github.com/Ibnballo1/book_appointment_backend/projects/1)
+
+![Screenshot 2023-04-07 124818](https://user-images.githubusercontent.com/88034255/230576882-0067c32f-f333-4a05-9264-ba4335768236.png)
+
+
+## <img src="https://emojipedia-us.s3.amazonaws.com/source/microsoft-teams/337/spiral-notepad_1f5d2-fe0f.png" width="23" height="20"/> API Documentation<a name="api-docs"></a>
+
+- Here is the API documentation of the project [Pinecone Place API-Docs](http://127.0.0.1:3000/api-docs/index.html)
+![API-docs](/public/api.png)
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -246,6 +251,6 @@ I would like to thank:
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT](./LICENSE) licensed.
+This project is [MIT](./MIT.md) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
