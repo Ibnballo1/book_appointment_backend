@@ -81,8 +81,6 @@
 - **[Authenticated Users can add/mark as removed a room]**
 - **[Authenticated Users can reserve/remove a room]**
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ## <img src="https://emojipedia-us.s3.amazonaws.com/source/microsoft-teams/337/spiral-notepad_1f5d2-fe0f.png" width="23" height="20"/> API Documentation<a name="api-docs"></a>
 
 - Here is the API documentation of the project [book-appointment API-Docs]()
